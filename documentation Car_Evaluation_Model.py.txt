@@ -1,0 +1,68 @@
+Script: Car_Evaluation_Model.py
+Purpose
+A command-line tool for training and evaluating models on a local Car Evaluation dataset file, along with saving the best-performing model.
+
+Key Features
+Loads and inspects data from a CSV file.
+
+Trains and compares multiple models.
+
+Saves the best model to a file.
+
+Main Components
+1. Data Handling
+load_car_evaluation_data(csv_file_path): Reads CSV without headers and assigns column names.
+
+2. Exploratory Data Analysis
+explore_data(car_df):
+
+Prints data preview.
+
+Displays class distribution.
+
+Saves a bar chart as acceptability_distribution.png.
+
+3. Preprocessing
+split_and_preprocess(car_df):
+
+Encodes the target.
+
+Performs a stratified train/test split.
+
+Creates a one-hot encoder pipeline for categorical features.
+
+4. Model Training
+train_and_select_best_model(...):
+
+Trains the same 4 models as the Streamlit app.
+
+Evaluates test accuracy and selects the best one.
+
+5. Model Saving
+save_trained_model(...): Persists the model pipeline and label encoder using joblib.
+
+6. Execution Logic
+Expects a CSV file path as a command-line argument.
+
+Runs the full pipeline from loading to saving.
+
+🧠 Model Overview (Shared in Both Scripts)
+Models Used:
+
+Logistic Regression
+
+Decision Tree Classifier
+
+Random Forest Classifier
+
+Linear Regression (adapted for classification use)
+
+Encoding:
+
+Target label: LabelEncoder
+
+Features: OneHotEncoder through ColumnTransformer
+
+Evaluation Metric:
+
+Classification accuracy on test data
